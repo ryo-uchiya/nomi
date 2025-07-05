@@ -1,0 +1,136 @@
+body {
+  --bg: #f7f7f7;
+  --container-bg: #fff;
+  --text-main: #2c3e50;
+  --text-sub: #333;
+  --button-bg: #3498db;
+  --button-hover: #217dbb;
+  --info: #666;
+  background: var(--bg);
+  font-family: 'Segoe UI', 'Hiragino Sans', 'Meiryo', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+body.dark-mode {
+  --bg: #181c1f;
+  --container-bg: #23272a;
+  --text-main: #e0e6ed;
+  --text-sub: #bfc9d1;
+  --button-bg: #3b82f6;
+  --button-hover: #2563eb;
+  --info: #a0aec0;
+  color-scheme: dark;
+}
+.container {
+  max-width: 400px;
+  margin: 40px auto;
+  background: var(--container-bg);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 24px 16px 16px 16px;
+  text-align: center;
+  position: relative;
+}
+h1 {
+  font-size: 1.4em;
+  margin-bottom: 18px;
+  color: var(--text-main);
+}
+#statusDisplay {
+  font-size: 1.1em;
+  margin-bottom: 18px;
+  color: var(--text-sub);
+}
+#currentStatus {
+  display: inline-block;
+  min-width: 80px;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-weight: bold;
+  transition: background 0.3s, color 0.3s;
+  margin-left: 4px;
+}
+.role-select {
+  margin-bottom: 12px;
+}
+.role-select label {
+  font-size: 1em;
+  color: var(--text-main);
+}
+.role-select select {
+  margin-left: 8px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+}
+.buttons {
+  margin-bottom: 18px;
+}
+.buttons button,
+.driver-buttons button,
+#clearHistoryBtn {
+  font-size: 1em;
+  margin: 0 6px 8px 6px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  background: var(--button-bg);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.buttons button:hover,
+.driver-buttons button:hover,
+#clearHistoryBtn:hover {
+  background: var(--button-hover);
+}
+.info {
+  font-size: 0.95em;
+  color: var(--info);
+  margin-top: 10px;
+}
+@media (max-width: 500px) {
+  .container {
+    max-width: 98vw;
+    margin: 10px auto;
+    padding: 10px 2vw 10px 2vw;
+  }
+  h1 {
+    font-size: 1.1em;
+  }
+  .buttons button,
+  .driver-buttons button,
+  #clearHistoryBtn {
+    font-size: 1em;
+    padding: 12px 0;
+    width: 90vw;
+    max-width: 320px;
+    margin: 6px auto;
+    display: block;
+  }
+  .nickname-area input {
+    width: 60vw !important;
+    min-width: 100px;
+    max-width: 220px;
+    font-size: 1em;
+  }
+  .nickname-area label {
+    font-size: 1em;
+  }
+  .driver-buttons {
+    margin-top: 10px;
+  }
+}
+
+/* ダークモード時の白文字指定 */
+body.dark-mode .nickname-area label {
+  color: #fff;
+}
+body.dark-mode .driver-buttons,
+body.dark-mode .driver-buttons span {
+  color: #fff;
+}
+body.dark-mode #historyArea {
+  color: #fff;
+}

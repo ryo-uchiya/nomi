@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>飲み会状況通知システム</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🍺飲み会状況通知🍺</h1>
+    <button id="toggleDarkModeBtn" style="position:absolute;right:18px;top:18px;">🌙</button>
+    <div id="statusDisplay">現在の状況: <span id="currentStatus">未設定</span></div>
+    <div class="nickname-area" style="margin-bottom:12px;">
+      <label for="nicknameInput">ニックネーム：</label>
+      <input type="text" id="nicknameInput" maxlength="20" style="width:120px;" placeholder="例：田中"/>
+    </div>
+
+    <div class="role-select" style="margin-bottom:12px;">
+      <label>あなたの役割：
+        <select id="roleSelect">
+          <option value="participant">参加者</option>
+          <option value="driver">送迎者</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="mapurl-area participant-mapurl" style="margin-bottom:10px;">
+      <label for="participantMapUrl" style="font-size:0.97em;">参加者の地図URL：</label>
+      <input type="text" id="participantMapUrl" style="width:70%;" placeholder="Googleマップの共有URLを貼り付け" />
+    </div>
+    <div class="buttons participant-buttons">
+      <button onclick="updateStatus('もうすぐ終わりそう')">もうすぐ終わりそう</button>
+      <button onclick="updateStatus('まだかかりそう')">まだかかりそう</button>
+      <button onclick="updateStatus('迎えに来てOK')">迎えに来てOK</button>
+      <button onclick="updateStatus('飲みすぎた...')">飲みすぎた...</button>
+    </div>
+    <div class="mapurl-area driver-mapurl" style="margin-bottom:10px; display:none;">
+      <label for="driverMapUrl" style="font-size:0.97em;">送迎者の地図URL：</label>
+      <input type="text" id="driverMapUrl" style="width:70%;" placeholder="Googleマップの共有URLを貼り付け" />
+    </div>
+    <div class="buttons driver-buttons" style="display:none;">
+      <span style="font-size: 0.95em;">送迎者用メッセージ</span><br>
+      <button onclick="updateStatus('了解')">了解</button>
+      <button onclick="updateStatus('迎えに行きます')">迎えに行きます</button>
+      <button onclick="updateStatus('もう少しで着きます')">もう少しで着きます</button>
+    </div>
+    <div class="info">
+      このページを送迎者と飲み会参加者で共有してください。<br>
+      どちらかがボタンを押すと、全員の画面にリアルタイムで反映されます。
+    </div>
+    <div id="mapLinkArea" style="margin:10px 0;"></div>
+    <button id="clearHistoryBtn" style="margin-top:16px;">履歴をクリア</button>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
