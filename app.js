@@ -1,6 +1,5 @@
 // --- ローカルストレージ版 飲み会状況通知 ---
-
-const GSHEET_API_URL = "https://script.google.com/macros/s/AKfycbwoyBpiFj7yabHCu2803CUlAwdMatitcQvvRdZfhf-WKHTeVDuS3KESyPXbZHnsQIM0Ig/exec";
+const GSHEET_API_URL = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLhButOgDrDvcWIIecQapG7X55aUbD0v8lnGfjUcn3IP-G_FPBZlgHeAxluXQddgdb3xUkLyku0DX_KLQesdhyWbmfNPwmR7gfFTPBzivWyP_CNmWC0j_lIuqaBP0SiAHVvuPN-UXrR-mF-6G9mlCGOs7a9E3kJuptZ3Nvm-5kcsgtVBLnx6Pnhn7J5BpRL6E3ZpGgpalmqzh95tfvzwZPu8Lg3GrH6VnhRrOZYrgGDIhVAhQ7SqL0C5_GkCzubWLBLmgA7J6romqbtCmSyeJs5zKiKLbMLwURaGtS_g&lib=MkREpdX0tsYDg6PA__bDtUbkGUNUT0wKd";
 // 状況・履歴の保存キー
 const STATUS_KEY = "nomikaiStatus";
 const HISTORY_KEY = "nomikaiStatusHistory";
@@ -36,7 +35,9 @@ async function updateStatus(status) {
         role: role,
         status: status,
         mapUrl: mapUrl
-      })
+      }),
+      mode: "cors",
+      redirect: "follow"
     });
     if (!res.ok) {
       alert("Googleスプレッドシートへの送信に失敗しました");

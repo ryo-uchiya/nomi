@@ -8,28 +8,28 @@
  */
 
 // スプレッドシートIDを指定
-const SHEET_ID = 'ここにスプレッドシートIDを記入';
+const SHEET_ID = '1GD5SL37c26-MPrTmBcU2K8RBHIcjHykcWuXNA_K4Ilw';
 const SHEET_NAME = 'Sheet1'; // シート名
 
 function doGet(e) {
+  Logger.log(JSON.stringify(e))
   const sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName(SHEET_NAME);
   const data = sheet.getDataRange().getValues();
   // 最新行のみ返す
   const last = data.length > 1 ? data[data.length - 1] : null;
   if (!last) {
     return ContentService.createTextOutput('{}')
-      .setMimeType(ContentService.MimeType.JSON)
-      .setHeader("Access-Control-Allow-Origin", "*");
+      .setMimeType(ContentService.MimeType.JSON);
   }
   const [timestamp, nickname, role, status, mapUrl] = last;
   return ContentService.createTextOutput(JSON.stringify({
     timestamp, nickname, role, status, mapUrl
   }))
-    .setMimeType(ContentService.MimeType.JSON)
-    .setHeader("Access-Control-Allow-Origin", "*");
+    .setMimeType(ContentService.MimeType.JSON);
 }
 
 function doPost(e) {
+  Logger.log(JSON.stringify(e))
   const sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName(SHEET_NAME);
   const params = JSON.parse(e.postData.contents);
   const now = new Date().toISOString();
@@ -41,6 +41,5 @@ function doPost(e) {
     params.mapUrl || ''
   ]);
   return ContentService.createTextOutput(JSON.stringify({result: 'ok'}))
-    .setMimeType(ContentService.MimeType.JSON)
-    .setHeader("Access-Control-Allow-Origin", "*");
+    .setMimeType(ContentService.MimeType.JSON);
 }
